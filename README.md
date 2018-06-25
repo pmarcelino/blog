@@ -1,2 +1,2 @@
 # blog
-My blog posts.
+Resources for my blog.
