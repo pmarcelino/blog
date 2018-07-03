@@ -1,2 +1,2 @@
 # blog
-Resources for my blog.
+Resources for pmarcelino.com blog.
