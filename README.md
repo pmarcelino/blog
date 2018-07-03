@@ -1,2 +1,2 @@
 # blog
-Resources for pmarcelino.com blog.
+Resources for [pmarcelino.com](www.pmarcelino.com) blog.
