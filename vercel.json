@@ -1,0 +1,58 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "astro",
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug",
+      "destination": "/posts/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug",
+      "destination": "/posts/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug([^\\/]+)$",
+      "destination": "/posts/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/categories/:category(.*)",
+      "destination": "/tags/:category",
+      "permanent": true
+    },
+    { "source": "/tag/:tag", "destination": "/tags/:tag", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self' https://howiusellms.blog https://*.vercel.app; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: data: https://howiusellms.blog https://*.vercel.app https://vercel.live https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://howiusellms.blog https://*.vercel.app; img-src 'self' data: https: blob:; font-src 'self' https://howiusellms.blog https://*.vercel.app; connect-src 'self' https://howiusellms.blog https://*.vercel.app https://vitals.vercel-insights.com https://va.vercel-scripts.com; media-src 'self' https://howiusellms.blog https://*.vercel.app; object-src 'none'; frame-ancestors 'none'; frame-src https://vercel.live https://www.youtube.com https://youtube.com https://*.youtube.com https://www.youtube-nocookie.com https://*.youtube-nocookie.com; worker-src 'self' blob:"
+        }
+      ]
+    }
+  ]
+}
