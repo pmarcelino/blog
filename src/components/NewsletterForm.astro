@@ -1,25 +1,46 @@
 ---
+/**
+ * Newsletter Subscription Form using Buttondown
+ * 
+ * HOW TO SET UP BUTTONDOWN:
+ * 
+ * 1. Go to https://buttondown.email/ and create a free account
+ * 2. After signing up, go to Settings to find your username
+ * 3. Replace "YOUR_BUTTONDOWN_USERNAME" below with your actual username
+ *    Example: If your Buttondown URL is buttondown.email/pmarcelino
+ *             then your username is "pmarcelino"
+ * 4. Optionally update the tag value to organize subscribers
+ * 5. Update the description text to match your newsletter's focus
+ * 
+ * TESTING:
+ * - After setup, test by subscribing with your own email
+ * - Check your Buttondown dashboard to confirm it works
+ */
+
 export interface Props {
   variant?: "default" | "compact";
 }
 
 const { variant = "default" } = Astro.props;
+
+// TODO: Replace with your Buttondown username after creating an account
+const BUTTONDOWN_USERNAME = "YOUR_BUTTONDOWN_USERNAME";
 ---
 
 <div class={variant === 'default' ? 'newsletter-box bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-6 my-8' : 'newsletter-compact mt-6'}>
   {variant === 'default' && (
     <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-      New posts, shipping stories, and nerdy links straight to your inbox.
+      Get new posts and insights on AI & LLMs delivered to your inbox.
     </p>
   )}
   
   <form
-    action="https://buttondown.com/api/emails/embed-subscribe/steipete"
+    action={`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`}
     method="post"
     target="_blank"
     class="flex flex-col sm:flex-row gap-3"
   >
-    <input type="hidden" name="tag" value="steipete" />
+    <input type="hidden" name="tag" value="howiusellms-blog" />
     <input
       type="text"
       name="name"
@@ -44,7 +65,7 @@ const { variant = "default" } = Astro.props;
   
   {variant === 'default' && (
     <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
-      2× per month, pure signal, zero fluff.
+      No spam, unsubscribe anytime.
     </p>
   )}
 </div>
