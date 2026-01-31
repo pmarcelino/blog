@@ -1,10 +1,10 @@
-# Pedro Marcelino's Personal Blog
+# How I Use LLMs Blog
 
 A personal blog built with [Astro](https://astro.build) and deployed on [Vercel](https://vercel.com).
 
 ## About
 
-This is my personal blog where I share thoughts on AI, LLMs, and practical applications.
+This is my personal blog where I share my journey of using LLMs in my daily life.
 
 **Website**: [howiusellms.blog](https://howiusellms.blog)
 

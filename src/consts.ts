@@ -35,7 +35,7 @@ export const SITE: Site = {
   author: "Pedro Marcelino",
   profile: "https://howiusellms.blog/about",
   desc: "Exploring the intersection of AI, LLMs, and practical applications.",
-  title: "Pedro Marcelino",
+  title: "How I Use LLMs",
   ogImage: "avatar.jpg",
   lightAndDarkMode: true,
   postPerIndex: 10,
