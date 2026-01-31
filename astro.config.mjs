@@ -9,6 +9,47 @@ import remarkCollapse from "remark-collapse";
 import { remarkLazyLoadImages } from "./src/utils/remarkLazyLoadImages.mjs";
 import { SITE } from "./src/config";
 import AstroPWA from "@vite-pwa/astro";
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+
+// Vite plugin to serve pagefind from dist folder in dev mode
+function pagefindDevPlugin() {
+  return {
+    name: "pagefind-dev",
+    configureServer(/** @type {import("vite").ViteDevServer} */ server) {
+      server.middlewares.use((req, res, next) => {
+        if (!req.url) return next();
+
+        const url = new URL(req.url, "http://localhost");
+        if (!url.pathname.startsWith("/pagefind/")) return next();
+
+        const relativePath = url.pathname.replace("/pagefind/", "");
+        const filePath = join(process.cwd(), "dist/pagefind", relativePath);
+
+        if (!existsSync(filePath)) return next();
+
+        const mimeTypes = {
+          js: "application/javascript",
+          css: "text/css",
+          json: "application/json",
+          wasm: "application/wasm",
+          pf_meta: "application/octet-stream",
+          pf_fragment: "application/octet-stream",
+          pf_index: "application/octet-stream",
+        };
+        const ext = /** @type {keyof typeof mimeTypes | undefined} */ (
+          relativePath.split(".").pop()
+        );
+        const contentType =
+          (ext && mimeTypes[ext]) || "application/octet-stream";
+
+        res.setHeader("Content-Type", contentType);
+        res.end(readFileSync(filePath));
+        return;
+      });
+    },
+  };
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -177,9 +218,15 @@ export default defineConfig({
         "@": "/src",
       },
     },
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), pagefindDevPlugin()],
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
+    },
+    server: {
+      fs: {
+        // Allow serving files from the dist folder for pagefind in dev mode
+        allow: [".."],
+      },
     },
   },
 });
