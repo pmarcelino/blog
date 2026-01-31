@@ -26,14 +26,14 @@ if (type === "BlogPosting") {
       name: "Pedro Marcelino",
       logo: {
         "@type": "ImageObject",
-        url: "https://howiusellms.blog/pedro-avatar-dali.png",
+        url: "https://howiusellms.blog/pedro-avatar.png",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": data.url,
     },
-    image: data.ogImage || "https://howiusellms.blog/pedro-avatar-dali.png",
+    image: data.ogImage || "https://howiusellms.blog/pedro-avatar.png",
     articleSection: data.tags?.[0] || "Technology",
     keywords: data.tags?.join(", ") || "",
     wordCount: data.wordCount,
@@ -45,13 +45,13 @@ if (type === "BlogPosting") {
     "@type": "Person",
     name: "Pedro Marcelino",
     url: "https://howiusellms.blog",
-    image: "https://howiusellms.blog/pedro-avatar-dali.png",
+    image: "https://howiusellms.blog/pedro-avatar.png",
     sameAs: [
       "https://github.com/pmarcelino",
     ],
     jobTitle: "Software Engineer",
     description:
-      "AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.",
+      "I always invite AI to the table. This is the board log of that journey.",
   };
 } else if (type === "WebSite") {
   structuredData = {
@@ -60,7 +60,7 @@ if (type === "BlogPosting") {
     name: "Pedro Marcelino",
     url: "https://howiusellms.blog",
     description:
-      "AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.",
+      "I always invite AI to the table. This is the board log of that journey.",
     author: {
       "@type": "Person",
       name: "Pedro Marcelino",
