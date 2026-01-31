@@ -67,26 +67,3 @@ export const NAV_LINKS: SocialLink[] = [
     label: "About",
   },
 ];
-
-// Social media links
-export const SOCIAL_LINKS: SocialLink[] = [
-  {
-    href: "https://github.com/pmarcelino",
-    label: "GitHub",
-  },
-  {
-    href: "https://www.linkedin.com/in/pmarcelino/",
-    label: "LinkedIn",
-  },
-  {
-    href: "mailto:hi@howiusellms.blog",
-    label: "Email",
-  },
-];
-
-// Icon map for social media
-export const ICON_MAP: Record<string, string> = {
-  GitHub: "github",
-  LinkedIn: "linkedin",
-  Email: "mail",
-};
